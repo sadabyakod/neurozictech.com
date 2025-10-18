@@ -291,7 +291,7 @@ export default function Home() {
 
           <AnimateOnScroll delay={200}>
             <p className="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Let's discuss how we can help you achieve your technology goals and drive growth through innovative solutions.
+              Let&apos;s discuss how we can help you achieve your technology goals and drive growth through innovative solutions.
             </p>
           </AnimateOnScroll>
 

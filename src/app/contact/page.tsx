@@ -64,7 +64,7 @@ export default function Contact() {
             <AnimateOnScroll delay={200}>
               <p className="text-xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed">
                 Ready to transform your business with innovative technology solutions? 
-                Let's start the conversation and build something amazing together.
+                Let&apos;s start the conversation and build something amazing together.
               </p>
             </AnimateOnScroll>
           </div>
@@ -82,8 +82,8 @@ export default function Contact() {
                   Get in Touch
                 </h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Have a project in mind? We'd love to hear about it. Send us a message 
-                  and we'll respond within 24 hours.
+                  Have a project in mind? We&apos;d love to hear about it. Send us a message 
+                  and we&apos;ll respond within 24 hours.
                 </p>
 
                 <ContactForm />
@@ -107,7 +107,7 @@ export default function Contact() {
                     Contact Information
                   </h3>
                   <p className="text-lg text-gray-600 mb-8">
-                    We're here to help you succeed. Reach out through any of these channels.
+                    We&apos;re here to help you succeed. Reach out through any of these channels.
                   </p>
                 </div>
 

@@ -56,7 +56,7 @@ export default function About() {
               <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
             </div>
             <p className="text-xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-              We're a team of passionate technologists dedicated to transforming 
+              We&apos;re a team of passionate technologists dedicated to transforming 
               businesses through innovative software solutions and digital excellence.
             </p>
             
@@ -99,11 +99,11 @@ export default function About() {
               </p>
               <p className="text-lg text-gray-600 mb-6">
                 We believe that technology should empower businesses, not complicate them. 
-                That's why we focus on creating intuitive, scalable solutions that drive 
+                That&apos;s why we focus on creating intuitive, scalable solutions that drive 
                 real results for our clients.
               </p>
               <p className="text-lg text-gray-600">
-                Today, we're proud to have helped over 200 companies transform their 
+                Today, we&apos;re proud to have helped over 200 companies transform their 
                 digital presence and achieve their business goals through cutting-edge 
                 technology solutions.
               </p>
@@ -166,7 +166,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-red-700 transition-colors">Passion</h3>
               <p className="text-gray-600 leading-relaxed">
-                We're passionate about technology and committed to delivering excellence in every project we undertake.
+                We&apos;re passionate about technology and committed to delivering excellence in every project we undertake.
               </p>
             </div>
 

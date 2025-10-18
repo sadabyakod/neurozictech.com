@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import AnimateOnScroll from '@/components/AnimateOnScroll';
-
 export const metadata = {
   title: 'Our Services - Custom Software Development & IT Solutions | Neurozic',
   description: 'Comprehensive IT services including web development, mobile apps, cloud solutions, AI/ML integration, and enterprise software development. Expert team in Bengaluru delivering innovative solutions.',
@@ -369,7 +367,7 @@ export default function Services() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            Let's discuss your project and how we can help bring your vision to life with innovative technology solutions.
+            Let&apos;s discuss your project and how we can help bring your vision to life with innovative technology solutions.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up" style={{animationDelay: '0.4s'}}>

@@ -61,7 +61,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="text-gray-400">
                 <span className="block">Neurozic Software Solutions Pvt. Ltd</span>
-                <span className="block">No-1367, Vayu Block, 'T' Wing,</span>
+                <span className="block">No-1367, Vayu Block, &apos;T&apos; Wing,</span>
                 <span className="block">Salarpuria GR Tech Park, Whitefield,</span>
                 <span className="block">Bengaluru, Karnataka – 560 066</span>
               </li>

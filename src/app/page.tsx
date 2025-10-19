@@ -2,10 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import ParticleBackground from '@/components/ParticleBackground';
+import ParallaxBackground from '@/components/ParallaxBackground';
+import MouseFollower from '@/components/MouseFollower';
 import Typewriter from '@/components/Typewriter';
 import StatsSection from '@/components/StatsSection';
+import AchievementStats from '@/components/AchievementStats';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import TechnologyShowcase from '@/components/TechnologyShowcase';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 export const metadata = {
   title: 'Neurozic Software Solutions - Leading IT Services & Software Development in Bengaluru',
@@ -57,94 +61,144 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative">
-      {/* Particle Background */}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <ParallaxBackground />
       <ParticleBackground />
+      <MouseFollower />
       
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 overflow-hidden">
-        {/* Animated background elements */}
+      {/* Hero Section with Enhanced Visuals */}
+      <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 overflow-hidden min-h-screen flex items-center">
+        {/* Animated background elements with more sophistication */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-40 left-1/2 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '4s'}}></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-morphing-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-morphing-blob" style={{animationDelay: '3s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-indigo-300 to-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-morphing-blob" style={{animationDelay: '6s'}}></div>
         </div>
+        
+        {/* Aurora effect overlay */}
+        <div className="absolute inset-0 animate-aurora opacity-30"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center">
             <AnimateOnScroll>
-              <div className="flex justify-center mb-8">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg blur-lg opacity-75 animate-pulse-glow"></div>
+              <div className="flex justify-center mb-12">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-2xl blur-xl opacity-75 animate-pulse-glow group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 rounded-2xl blur-lg opacity-50 animate-breathing"></div>
                   <Image 
                     src="/company-logo.jpeg" 
                     alt="Neurozic Software Solutions Logo" 
-                    width={120} 
-                    height={120} 
-                    className="relative rounded-lg shadow-2xl hover-lift gpu-accelerated interactive"
+                    width={140} 
+                    height={140} 
+                    className="relative rounded-2xl shadow-2xl hover-lift gpu-accelerated interactive transform group-hover:scale-110 transition-all duration-500"
                     priority
                   />
+                  {/* Floating particles around logo */}
+                  <div className="absolute -top-2 -right-2 w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-particle-float opacity-80"></div>
+                  <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-particle-float opacity-80" style={{animationDelay: '2s'}}></div>
+                  <div className="absolute top-1/2 -right-4 w-1 h-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-particle-float opacity-80" style={{animationDelay: '4s'}}></div>
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={200}>
-              <h1 className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 mb-6 animate-gradient-shift leading-tight">
-                Neurozic Software
-                <span className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 bg-clip-text">Solutions</span>
+              <h1 className="text-7xl md:text-9xl font-extrabold mb-8 animate-gradient-shift leading-tight">
+                <span className="text-gradient animate-text-shimmer bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                  Neurozic Software
+                </span>
+                <br />
+                <span className="text-gradient animate-holographic bg-clip-text text-transparent block">
+                  Solutions
+                </span>
               </h1>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={400}>
-              <div className="text-2xl md:text-4xl text-gray-700 mb-8 font-light">
-                We specialize in{' '}
-                <span className="font-semibold text-blue-600">
-                  <Typewriter 
-                    words={[
-                      'AI Integration',
-                      'Cloud Solutions', 
-                      'Web Development',
-                      'Mobile Apps',
-                      'DevOps Automation',
-                      'Digital Transformation'
-                    ]}
-                    typeSpeed={80}
-                    deleteSpeed={40}
-                    delayBetweenWords={2500}
-                  />
+              <div className="text-3xl md:text-5xl text-gray-700 mb-12 font-light relative">
+                <span className="relative">
+                  We create{' '}
+                  <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 animate-neon-glow">
+                    <Typewriter 
+                      words={[
+                        'Revolutionary AI Solutions',
+                        'Stunning Web Experiences', 
+                        'Next-Gen Mobile Apps',
+                        'Intelligent Cloud Platforms',
+                        'Automated DevOps Pipelines',
+                        'Digital Transformation Magic'
+                      ]}
+                      typeSpeed={100}
+                      deleteSpeed={50}
+                      delayBetweenWords={3000}
+                    />
+                  </span>
                 </span>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+                <div className="absolute -bottom-4 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-60" style={{animationDelay: '1s'}}></div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={600}>
-              <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-                Transform your business through cutting-edge software development, 
-                AI integration, and digital innovation. Partner with us to accelerate 
-                your digital transformation journey with results that exceed expectations.
+              <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-5xl mx-auto leading-relaxed relative">
+                <span className="relative z-10">
+                  Transform your business through cutting-edge innovation, 
+                  AI-powered solutions, and breathtaking digital experiences. 
+                  Partner with visionaries who turn impossibilities into realities.
+                </span>
+                {/* Subtle background highlight */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl -z-10 opacity-50"></div>
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={800}>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-8 justify-center">
                 <Link 
                   href="/contact" 
-                  className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full hover:from-blue-700 hover:to-indigo-700 hover-lift hover-glow interactive focus-visible gpu-accelerated shadow-2xl hover:shadow-3xl transform transition-all duration-300"
+                  className="group relative inline-flex items-center justify-center px-12 py-6 text-2xl font-bold text-white bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 hover-lift hover-glow interactive focus-visible gpu-accelerated shadow-2xl hover:shadow-3xl transform transition-all duration-500 magnetic"
                 >
-                  <span className="relative z-10">Start Your Project</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <svg className="ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                  <span className="relative z-10 flex items-center">
+                    🚀 Start Your Journey
+                    <svg className="ml-4 w-7 h-7 transform group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-800 via-purple-800 to-indigo-800 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Animated particles */}
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
+                  <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-cyan-300 rounded-full opacity-0 group-hover:opacity-100 animate-ping" style={{animationDelay: '0.5s'}}></div>
                 </Link>
+                
                 <Link 
                   href="/services" 
-                  className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-blue-600 bg-white/90 backdrop-blur-sm border-2 border-blue-600 rounded-full hover:bg-blue-600 hover:text-white hover-lift interactive focus-visible gpu-accelerated shadow-lg hover:shadow-xl transform transition-all duration-300"
+                  className="group relative inline-flex items-center justify-center px-12 py-6 text-2xl font-bold text-blue-600 bg-white/90 backdrop-blur-sm border-3 border-blue-600 rounded-full hover:bg-blue-600 hover:text-white hover-lift interactive focus-visible gpu-accelerated shadow-xl hover:shadow-2xl transform transition-all duration-500 glass-morphism"
                 >
-                  <span className="relative z-10">Explore Services</span>
-                  <svg className="ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <span className="relative z-10 flex items-center">
+                    ✨ Explore Magic
+                    <svg className="ml-4 w-7 h-7 transform group-hover:translate-x-2 group-hover:rotate-12 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                  
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-text-shimmer"></div>
                 </Link>
+              </div>
+            </AnimateOnScroll>
+
+            {/* Floating call-to-action elements */}
+            <AnimateOnScroll delay={1000}>
+              <div className="mt-16 flex justify-center space-x-8">
+                <div className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-300 cursor-pointer group">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="group-hover:scale-105 transition-transform duration-300">Available for new projects</span>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors duration-300 cursor-pointer group">
+                  <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <span className="group-hover:scale-105 transition-transform duration-300">24/7 Expert Support</span>
+                </div>
               </div>
             </AnimateOnScroll>
 
@@ -317,11 +371,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Statistics Section */}
+      {/* Enhanced Stats Section */}
       <StatsSection />
+
+      {/* Achievement Stats - New impressive section */}
+      <AchievementStats />
 
       {/* Technology Showcase */}
       <TechnologyShowcase />
+
+      {/* Portfolio Showcase - New impressive section */}
+      <PortfolioShowcase />
 
       {/* Testimonials Section */}
       <TestimonialsSection />

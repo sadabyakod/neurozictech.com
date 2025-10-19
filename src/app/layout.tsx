@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Neurozic Software Solutions Pvt. Ltd - Innovative Technology Solutions in Bengaluru",
+  title: "Neurozic Software Solutions Pvt Ltd - Innovative Technology Solutions in Bengaluru",
   description: "Leading technology company in Bengaluru providing innovative software solutions, web development, mobile apps, cloud solutions, and digital transformation services. Contact: techinfo@neurozic.com",
   keywords: "Neurozic, software solutions, web development, mobile apps, cloud solutions, Bengaluru IT company, digital transformation, custom software development",
   openGraph: {

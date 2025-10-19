@@ -2,10 +2,10 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Us - Neurozic Software Solutions | Leading Technology Company in Bengaluru',
-  description: 'Learn about Neurozic Software Solutions Pvt. Ltd - a leading technology company in Bengaluru providing innovative software solutions, web development, AI/ML, cloud services, and digital transformation.',
+  description: 'Learn about Neurozic Software Solutions Pvt Ltd - a leading technology company in Bengaluru providing innovative software solutions, web development, AI/ML, cloud services, and digital transformation.',
   keywords: 'Neurozic Software Solutions, about us, technology company Bengaluru, software development company, web development, AI ML services, cloud solutions, digital transformation, IT consulting',
   authors: [{ name: 'Neurozic Software Solutions' }],
-  creator: 'Neurozic Software Solutions Pvt. Ltd',
+  creator: 'Neurozic Software Solutions Pvt Ltd',
   publisher: 'Neurozic Software Solutions',
   robots: 'index, follow',
   openGraph: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About Neurozic Software Solutions - Leading Technology Company',
-    description: 'Learn about our passionate team and innovative technology solutions at Neurozic Software Solutions Pvt. Ltd.',
+    description: 'Learn about our passionate team and innovative technology solutions at Neurozic Software Solutions Pvt Ltd.',
     images: ['/company-logo.jpeg'],
   },
   alternates: {
@@ -92,7 +92,7 @@ export default function About() {
                 Our Story
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Founded in 2020, Neurozic Software Solutions Pvt. Ltd emerged from a simple vision: to bridge the gap 
+                Founded in 2020, Neurozic Software Solutions Pvt Ltd emerged from a simple vision: to bridge the gap 
                 between innovative technology and practical business solutions. What started 
                 as a small team of developers has grown into a comprehensive technology 
                 consultancy serving clients worldwide.

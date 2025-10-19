@@ -132,7 +132,7 @@ function Footer() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                             className: "text-2xl font-bold text-white",
-                                            children: "Neurozic Software Solutions Pvt. Ltd"
+                                            children: "Neurozic Software Solutions Pvt Ltd"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Footer.tsx",
                                             lineNumber: 19,
@@ -372,7 +372,7 @@ function Footer() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "block",
-                                                    children: "Neurozic Software Solutions Pvt. Ltd"
+                                                    children: "Neurozic Software Solutions Pvt Ltd"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Footer.tsx",
                                                     lineNumber: 63,
@@ -459,7 +459,7 @@ function Footer() {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "border-t border-gray-800 mt-8 pt-8 text-center text-gray-400",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        children: "© 2025 Neurozic Software Solutions Pvt. Ltd. All rights reserved."
+                        children: "© 2025 Neurozic Software Solutions Pvt Ltd. All rights reserved."
                     }, void 0, false, {
                         fileName: "[project]/src/components/Footer.tsx",
                         lineNumber: 79,
@@ -580,7 +580,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ChatBot
 ;
 ;
 const metadata = {
-    title: "Neurozic Software Solutions Pvt. Ltd - Innovative Technology Solutions in Bengaluru",
+    title: "Neurozic Software Solutions Pvt Ltd - Innovative Technology Solutions in Bengaluru",
     description: "Leading technology company in Bengaluru providing innovative software solutions, web development, mobile apps, cloud solutions, and digital transformation services. Contact: techinfo@neurozic.com",
     keywords: "Neurozic, software solutions, web development, mobile apps, cloud solutions, Bengaluru IT company, digital transformation, custom software development",
     openGraph: {

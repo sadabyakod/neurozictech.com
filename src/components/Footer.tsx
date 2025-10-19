@@ -16,7 +16,7 @@ export default function Footer() {
                 height={32} 
                 className="mr-3 rounded"
               />
-              <h3 className="text-2xl font-bold text-white">Neurozic Software Solutions Pvt. Ltd</h3>
+              <h3 className="text-2xl font-bold text-white">Neurozic Software Solutions Pvt Ltd</h3>
             </div>
             <p className="text-gray-400 mb-6">
               Leading technology company providing innovative software solutions, 
@@ -60,7 +60,7 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <ul className="space-y-2">
               <li className="text-gray-400">
-                <span className="block">Neurozic Software Solutions Pvt. Ltd</span>
+                <span className="block">Neurozic Software Solutions Pvt Ltd</span>
                 <span className="block">No-1367, Vayu Block, &apos;T&apos; Wing,</span>
                 <span className="block">Salarpuria GR Tech Park, Whitefield,</span>
                 <span className="block">Bengaluru, Karnataka – 560 066</span>
@@ -76,7 +76,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Neurozic Software Solutions Pvt. Ltd. All rights reserved.</p>
+          <p>&copy; 2025 Neurozic Software Solutions Pvt Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

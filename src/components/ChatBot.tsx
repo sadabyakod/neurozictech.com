@@ -47,7 +47,11 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
   }, [messages]);
 
   const handleSendMessage = async () => {
-    if (!inputMessage.trim()) return;
+    console.log('Send button clicked, input message:', inputMessage);
+    if (!inputMessage.trim()) {
+      console.log('No message to send');
+      return;
+    }
 
     const newUserMessage: Message = {
       id: Date.now().toString(),
@@ -62,6 +66,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
     setIsTyping(true);
 
     try {
+      console.log('Sending message to API:', currentMessage);
       // Call the chat API
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -71,7 +76,12 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
         body: JSON.stringify({ message: currentMessage }),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const chatResponse: ChatResponse = await response.json();
+      console.log('Received response:', chatResponse);
 
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
@@ -176,12 +186,19 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
+  // Debug log
+  console.log('ChatBot component rendered. isOpen state:', isOpen);
+
   return (
     <>
       {/* Chat Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-0 right-6 z-50 bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 ${className}`}
+        onClick={() => {
+          console.log('Chatbot button clicked! Current isOpen state:', isOpen);
+          setIsOpen(!isOpen);
+          console.log('Setting isOpen to:', !isOpen);
+        }}
+        className={`fixed bottom-6 right-6 z-50 bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 ${className}`}
         aria-label="Open chat"
       >
         {isOpen ? (
@@ -197,7 +214,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-14 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
+        <div className="fixed bottom-20 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -377,7 +394,11 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
                 disabled={isTyping}
               />
               <button
-                onClick={handleSendMessage}
+                onClick={() => {
+                  console.log('Send button clicked! Input:', inputMessage);
+                  console.log('Send button disabled state:', !inputMessage.trim() || isTyping);
+                  handleSendMessage();
+                }}
                 disabled={!inputMessage.trim() || isTyping}
                 className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >

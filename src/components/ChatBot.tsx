@@ -37,6 +37,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
   });
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -376,13 +377,25 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
           <div className="p-4 border-t bg-white">
             <div className="flex space-x-2">
               <input
+                ref={inputRef}
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
+                onTouchStart={() => {
+                  // Ensure input is focusable on mobile
+                  if (inputRef.current) {
+                    inputRef.current.focus();
+                  }
+                }}
                 placeholder="Type your message..."
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 disabled={isTyping}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="sentences"
+                spellCheck="true"
+                inputMode="text"
               />
               <button
                 onClick={() => {

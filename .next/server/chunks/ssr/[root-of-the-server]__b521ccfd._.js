@@ -394,6 +394,7 @@ const ChatBot = ({ className = '' })=>{
     });
     const [isSubmittingEmail, setIsSubmittingEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const messagesEndRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const inputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const scrollToBottom = ()=>{
         messagesEndRef.current?.scrollIntoView({
             behavior: 'smooth'
@@ -405,7 +406,11 @@ const ChatBot = ({ className = '' })=>{
         messages
     ]);
     const handleSendMessage = async ()=>{
-        if (!inputMessage.trim()) return;
+        console.log('Send button clicked, input message:', inputMessage);
+        if (!inputMessage.trim()) {
+            console.log('No message to send');
+            return;
+        }
         const newUserMessage = {
             id: Date.now().toString(),
             text: inputMessage,
@@ -420,6 +425,7 @@ const ChatBot = ({ className = '' })=>{
         setInputMessage('');
         setIsTyping(true);
         try {
+            console.log('Sending message to API:', currentMessage);
             // Call the chat API
             const response = await fetch('/api/chat', {
                 method: 'POST',
@@ -430,7 +436,11 @@ const ChatBot = ({ className = '' })=>{
                     message: currentMessage
                 })
             });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const chatResponse = await response.json();
+            console.log('Received response:', chatResponse);
             const botResponse = {
                 id: (Date.now() + 1).toString(),
                 text: chatResponse.response,
@@ -536,11 +546,17 @@ const ChatBot = ({ className = '' })=>{
             minute: '2-digit'
         });
     };
+    // Debug log
+    console.log('ChatBot component rendered. isOpen state:', isOpen);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                onClick: ()=>setIsOpen(!isOpen),
-                className: `fixed bottom-0 right-6 z-50 bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 ${className}`,
+                onClick: ()=>{
+                    console.log('Chatbot button clicked! Current isOpen state:', isOpen);
+                    setIsOpen(!isOpen);
+                    console.log('Setting isOpen to:', !isOpen);
+                },
+                className: `fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 bg-gradient-to-r from-green-500 to-emerald-600 text-white p-2.5 sm:p-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 ${className}`,
                 "aria-label": "Open chat",
                 children: isOpen ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                     className: "w-6 h-6",
@@ -554,12 +570,12 @@ const ChatBot = ({ className = '' })=>{
                         d: "M6 18L18 6M6 6l12 12"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ChatBot.tsx",
-                        lineNumber: 189,
+                        lineNumber: 207,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ChatBot.tsx",
-                    lineNumber: 188,
+                    lineNumber: 206,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                     className: "w-6 h-6",
@@ -573,21 +589,21 @@ const ChatBot = ({ className = '' })=>{
                         d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ChatBot.tsx",
-                        lineNumber: 193,
+                        lineNumber: 211,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ChatBot.tsx",
-                    lineNumber: 192,
+                    lineNumber: 210,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0))
             }, void 0, false, {
                 fileName: "[project]/src/components/ChatBot.tsx",
-                lineNumber: 182,
+                lineNumber: 196,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed bottom-14 right-6 z-50 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden",
+                className: "fixed bottom-16 left-4 right-4 sm:bottom-20 sm:left-6 sm:right-auto sm:w-96 z-50 w-auto h-96 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 flex items-center justify-between",
@@ -599,7 +615,7 @@ const ChatBot = ({ className = '' })=>{
                                         className: "w-3 h-3 bg-green-400 rounded-full animate-pulse"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 204,
+                                        lineNumber: 222,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -609,7 +625,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Neurozic AI Assistant"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 206,
+                                                lineNumber: 224,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -617,19 +633,19 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Online now"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 207,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 205,
+                                        lineNumber: 223,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                lineNumber: 203,
+                                lineNumber: 221,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -647,23 +663,23 @@ const ChatBot = ({ className = '' })=>{
                                         d: "M6 18L18 6M6 6l12 12"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 233,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ChatBot.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 232,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                lineNumber: 210,
+                                lineNumber: 228,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ChatBot.tsx",
-                        lineNumber: 202,
+                        lineNumber: 220,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -679,7 +695,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: message.text
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 234,
+                                                lineNumber: 252,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -687,18 +703,18 @@ const ChatBot = ({ className = '' })=>{
                                                 children: formatTime(message.timestamp)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 235,
+                                                lineNumber: 253,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 245,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, message.id, false, {
                                     fileName: "[project]/src/components/ChatBot.tsx",
-                                    lineNumber: 223,
+                                    lineNumber: 241,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))),
                             isTyping && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -712,7 +728,7 @@ const ChatBot = ({ className = '' })=>{
                                                 className: "w-2 h-2 bg-gray-400 rounded-full animate-bounce"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 248,
+                                                lineNumber: 266,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -722,7 +738,7 @@ const ChatBot = ({ className = '' })=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 249,
+                                                lineNumber: 267,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -732,36 +748,36 @@ const ChatBot = ({ className = '' })=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 250,
+                                                lineNumber: 268,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 247,
+                                        lineNumber: 265,
                                         columnNumber: 19
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ChatBot.tsx",
-                                    lineNumber: 246,
+                                    lineNumber: 264,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                lineNumber: 245,
+                                lineNumber: 263,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 ref: messagesEndRef
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                lineNumber: 255,
+                                lineNumber: 273,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ChatBot.tsx",
-                        lineNumber: 221,
+                        lineNumber: 239,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     showEmailForm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -775,7 +791,7 @@ const ChatBot = ({ className = '' })=>{
                                         children: "Send us an Email"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 280,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -793,23 +809,23 @@ const ChatBot = ({ className = '' })=>{
                                                 d: "M6 18L18 6M6 6l12 12"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 268,
+                                                lineNumber: 286,
                                                 columnNumber: 21
                                             }, ("TURBOPACK compile-time value", void 0))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ChatBot.tsx",
-                                            lineNumber: 267,
+                                            lineNumber: 285,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 263,
+                                        lineNumber: 281,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                lineNumber: 261,
+                                lineNumber: 279,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -823,7 +839,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Name *"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 275,
+                                                lineNumber: 293,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -836,13 +852,13 @@ const ChatBot = ({ className = '' })=>{
                                                 placeholder: "Your full name"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 276,
+                                                lineNumber: 294,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 274,
+                                        lineNumber: 292,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -852,7 +868,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Email *"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 288,
+                                                lineNumber: 306,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -865,13 +881,13 @@ const ChatBot = ({ className = '' })=>{
                                                 placeholder: "your.email@example.com"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 289,
+                                                lineNumber: 307,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 287,
+                                        lineNumber: 305,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -881,7 +897,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Phone"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 301,
+                                                lineNumber: 319,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -893,13 +909,13 @@ const ChatBot = ({ className = '' })=>{
                                                 placeholder: "+1 (555) 123-4567"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 302,
+                                                lineNumber: 320,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 300,
+                                        lineNumber: 318,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -909,7 +925,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Subject *"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 313,
+                                                lineNumber: 331,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -922,13 +938,13 @@ const ChatBot = ({ className = '' })=>{
                                                 placeholder: "Project inquiry, quote request, etc."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 314,
+                                                lineNumber: 332,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 312,
+                                        lineNumber: 330,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -938,7 +954,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Message *"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 326,
+                                                lineNumber: 344,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -951,13 +967,13 @@ const ChatBot = ({ className = '' })=>{
                                                 placeholder: "Tell us about your project, requirements, or questions..."
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 327,
+                                                lineNumber: 345,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 325,
+                                        lineNumber: 343,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -970,7 +986,7 @@ const ChatBot = ({ className = '' })=>{
                                                 children: "Cancel"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 339,
+                                                lineNumber: 357,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -980,25 +996,25 @@ const ChatBot = ({ className = '' })=>{
                                                 children: isSubmittingEmail ? 'Sending...' : 'Send Email'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                                lineNumber: 346,
+                                                lineNumber: 364,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 338,
+                                        lineNumber: 356,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ChatBot.tsx",
-                                lineNumber: 273,
+                                lineNumber: 291,
                                 columnNumber: 15
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ChatBot.tsx",
-                        lineNumber: 260,
+                        lineNumber: 278,
                         columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1006,92 +1022,76 @@ const ChatBot = ({ className = '' })=>{
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex space-x-2",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: handleShowEmailForm,
-                                    className: "bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition-colors",
-                                    title: "Send Email",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        className: "w-5 h-5",
-                                        fill: "none",
-                                        stroke: "currentColor",
-                                        viewBox: "0 0 24 24",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            strokeWidth: 2,
-                                            d: "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/ChatBot.tsx",
-                                            lineNumber: 367,
-                                            columnNumber: 19
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 366,
-                                        columnNumber: 17
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/ChatBot.tsx",
-                                    lineNumber: 361,
-                                    columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    ref: inputRef,
                                     type: "text",
                                     value: inputMessage,
                                     onChange: (e)=>setInputMessage(e.target.value),
                                     onKeyPress: handleKeyPress,
+                                    onTouchStart: ()=>{
+                                        // Ensure input is focusable on mobile
+                                        if (inputRef.current) {
+                                            inputRef.current.focus();
+                                        }
+                                    },
                                     placeholder: "Type your message...",
                                     className: "flex-1 px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none",
-                                    disabled: isTyping
+                                    disabled: isTyping,
+                                    autoComplete: "off",
+                                    autoCorrect: "off",
+                                    autoCapitalize: "sentences",
+                                    spellCheck: "true",
+                                    inputMode: "text"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ChatBot.tsx",
-                                    lineNumber: 370,
+                                    lineNumber: 379,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: handleSendMessage,
+                                    onClick: ()=>{
+                                        console.log('Send button clicked! Input:', inputMessage);
+                                        console.log('Send button disabled state:', !inputMessage.trim() || isTyping);
+                                        handleSendMessage();
+                                    },
                                     disabled: !inputMessage.trim() || isTyping,
-                                    className: "bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                                    className: "bg-blue-500 text-white p-4 sm:p-2 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[48px] min-h-[48px] flex items-center justify-center",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        className: "w-5 h-5",
-                                        fill: "none",
+                                        className: "w-5 h-5 sm:w-5 sm:h-5",
+                                        fill: "currentColor",
                                         stroke: "currentColor",
                                         viewBox: "0 0 24 24",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            strokeWidth: 2,
-                                            d: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                                            d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ChatBot.tsx",
-                                            lineNumber: 385,
+                                            lineNumber: 410,
                                             columnNumber: 19
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ChatBot.tsx",
-                                        lineNumber: 384,
+                                        lineNumber: 409,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ChatBot.tsx",
-                                    lineNumber: 379,
+                                    lineNumber: 400,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ChatBot.tsx",
-                            lineNumber: 360,
+                            lineNumber: 378,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/components/ChatBot.tsx",
-                        lineNumber: 359,
+                        lineNumber: 377,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ChatBot.tsx",
-                lineNumber: 200,
+                lineNumber: 218,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
@@ -1119,10 +1119,10 @@ function FloatingActionButton() {
         setIsOpen(!isOpen);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "fixed bottom-6 right-6 z-50",
+        className: "fixed bottom-4 right-20 sm:bottom-5 sm:right-24 z-50",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: `mb-4 space-y-3 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`,
+                className: `mb-2 space-y-3 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: "/contact",
@@ -1267,10 +1267,10 @@ function FloatingActionButton() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                 onClick: toggleMenu,
-                className: `w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover-lift hover-glow ${isOpen ? 'rotate-45' : ''}`,
+                className: `bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover-lift hover-glow p-2 sm:p-2.5 ${isOpen ? 'rotate-45' : ''}`,
                 "aria-label": "Quick actions menu",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                    className: "w-8 h-8 text-white",
+                    className: "w-5 h-5 text-white transform translate-y-0.5",
                     fill: "none",
                     stroke: "currentColor",
                     viewBox: "0 0 24 24",

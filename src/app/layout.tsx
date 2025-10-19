@@ -5,8 +5,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollAnimationOptimizer from "@/components/ScrollAnimationOptimizer";
 import ChatBot from "@/components/ChatBot";
-import MouseFollower from "@/components/MouseFollower";
-import ParallaxBackground from "@/components/ParallaxBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,8 +61,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ParallaxBackground />
-        <MouseFollower />
         <ScrollAnimationOptimizer />
         <Navigation />
         <main className="pt-16">

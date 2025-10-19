@@ -167,7 +167,7 @@ export default function Contact() {
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-1">Office</h4>
                       <p className="text-gray-600">
-                        Neurozic Software Solutions Pvt. Ltd<br />
+                        Neurozic Software Solutions Private Limited<br />
                         Bengaluru, Karnataka, India
                       </p>
                       <p className="text-sm text-gray-500 mt-1">Available for in-person consultations</p>

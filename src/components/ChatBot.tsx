@@ -214,7 +214,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-16 left-2 sm:bottom-20 sm:left-6 z-50 w-80 sm:w-96 h-96 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
+        <div className="fixed bottom-16 left-1 right-1 sm:bottom-20 sm:left-6 sm:right-auto sm:w-96 z-50 w-auto h-96 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -393,7 +393,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
                 disabled={!inputMessage.trim() || isTyping}
                 className="bg-blue-500 text-white p-4 sm:p-2 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[48px] min-h-[48px] flex items-center justify-center"
               >
-                <svg className="w-7 h-7 sm:w-5 sm:h-5" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-5 sm:h-5" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
               </button>

@@ -198,7 +198,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
           setIsOpen(!isOpen);
           console.log('Setting isOpen to:', !isOpen);
         }}
-        className={`fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 bg-gradient-to-r from-green-500 to-emerald-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 ${className}`}
+        className={`fixed bottom-4 right-2 sm:bottom-6 sm:right-6 z-50 bg-gradient-to-r from-green-500 to-emerald-600 text-white p-2.5 sm:p-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 ${className}`}
         aria-label="Open chat"
       >
         {isOpen ? (

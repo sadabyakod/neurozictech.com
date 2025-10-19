@@ -11,7 +11,7 @@ export default function FloatingActionButton() {
   };
 
   return (
-    <div className="fixed bottom-6 left-6 z-50">
+    <div className="fixed bottom-4 right-20 sm:bottom-5 sm:right-24 z-50">
       {/* Quick action buttons */}
       <div className={`mb-2 space-y-3 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
         {/* Contact button */}
@@ -57,10 +57,10 @@ export default function FloatingActionButton() {
       {/* Main FAB */}
       <button
         onClick={toggleMenu}
-        className={`w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover-lift hover-glow ${isOpen ? 'rotate-45' : ''}`}
+        className={`bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover-lift hover-glow p-2 sm:p-2.5 ${isOpen ? 'rotate-45' : ''}`}
         aria-label="Quick actions menu"
       >
-        <svg className="w-8 h-8 text-white transform translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-white transform translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
         </svg>
       </button>

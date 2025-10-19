@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import ParticleBackground from '@/components/ParticleBackground';
+import Typewriter from '@/components/Typewriter';
+import StatsSection from '@/components/StatsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import TechnologyShowcase from '@/components/TechnologyShowcase';
 
 export const metadata = {
   title: 'Neurozic Software Solutions - Leading IT Services & Software Development in Bengaluru',
@@ -52,7 +57,10 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Particle Background */}
+      <ParticleBackground />
+      
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 overflow-hidden">
         {/* Animated background elements */}
@@ -62,7 +70,7 @@ export default function Home() {
           <div className="absolute top-40 left-1/2 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '4s'}}></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center">
             <AnimateOnScroll>
               <div className="flex justify-center mb-8">
@@ -71,8 +79,8 @@ export default function Home() {
                   <Image 
                     src="/company-logo.jpeg" 
                     alt="Neurozic Software Solutions Logo" 
-                    width={100} 
-                    height={100} 
+                    width={120} 
+                    height={120} 
                     className="relative rounded-lg shadow-2xl hover-lift gpu-accelerated interactive"
                     priority
                   />
@@ -81,38 +89,73 @@ export default function Home() {
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={200}>
-              <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 mb-6 animate-gradient-shift">
+              <h1 className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 mb-6 animate-gradient-shift leading-tight">
                 Neurozic Software
                 <span className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 bg-clip-text">Solutions</span>
               </h1>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={400}>
-              <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto leading-relaxed">
-                We transform businesses through cutting-edge software development, 
-                AI integration, and digital innovation. Partner with us to accelerate 
-                your digital transformation journey.
-              </p>
+              <div className="text-2xl md:text-4xl text-gray-700 mb-8 font-light">
+                We specialize in{' '}
+                <span className="font-semibold text-blue-600">
+                  <Typewriter 
+                    words={[
+                      'AI Integration',
+                      'Cloud Solutions', 
+                      'Web Development',
+                      'Mobile Apps',
+                      'DevOps Automation',
+                      'Digital Transformation'
+                    ]}
+                    typeSpeed={80}
+                    deleteSpeed={40}
+                    delayBetweenWords={2500}
+                  />
+                </span>
+              </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={600}>
+              <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Transform your business through cutting-edge software development, 
+                AI integration, and digital innovation. Partner with us to accelerate 
+                your digital transformation journey with results that exceed expectations.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={800}>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link 
                   href="/contact" 
-                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full hover:from-blue-700 hover:to-indigo-700 hover-lift hover-glow interactive focus-visible gpu-accelerated shadow-lg hover:shadow-xl"
+                  className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full hover:from-blue-700 hover:to-indigo-700 hover-lift hover-glow interactive focus-visible gpu-accelerated shadow-2xl hover:shadow-3xl transform transition-all duration-300"
                 >
-                  <span className="relative z-10">Get Started</span>
+                  <span className="relative z-10">Start Your Project</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </Link>
-                <Link 
-                  href="/services" 
-                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white border-2 border-blue-600 rounded-full hover:bg-blue-600 hover:text-white hover-lift interactive focus-visible gpu-accelerated shadow-lg hover:shadow-xl"
-                >
-                  <span className="relative z-10">Our Services</span>
-                  <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
+                <Link 
+                  href="/services" 
+                  className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-semibold text-blue-600 bg-white/90 backdrop-blur-sm border-2 border-blue-600 rounded-full hover:bg-blue-600 hover:text-white hover-lift interactive focus-visible gpu-accelerated shadow-lg hover:shadow-xl transform transition-all duration-300"
+                >
+                  <span className="relative z-10">Explore Services</span>
+                  <svg className="ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </AnimateOnScroll>
+
+            {/* Scroll indicator */}
+            <AnimateOnScroll delay={1000}>
+              <div className="mt-16 flex justify-center">
+                <div className="animate-bounce">
+                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </div>
               </div>
             </AnimateOnScroll>
           </div>
@@ -273,6 +316,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Statistics Section */}
+      <StatsSection />
+
+      {/* Technology Showcase */}
+      <TechnologyShowcase />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* CTA Section */}
       <section className="relative py-24 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 overflow-hidden">

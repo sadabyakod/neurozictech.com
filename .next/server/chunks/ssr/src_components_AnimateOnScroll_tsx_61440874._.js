@@ -1,0 +1,3 @@
+module.exports=[30370,a=>{"use strict";a.s(["default",()=>d]);var b=a.i(87924),c=a.i(72131);function d({children:a,className:d="",delay:e=0,threshold:f=.1}){let g=(0,c.useRef)(null);return(0,c.useEffect)(()=>{let a=g.current;if(!a)return;let b=new IntersectionObserver(a=>{a.forEach(a=>{a.isIntersecting&&setTimeout(()=>{a.target.classList.add("animate")},e)})},{threshold:f,rootMargin:"50px"});return b.observe(a),()=>{b.unobserve(a)}},[e,f]),(0,b.jsx)("div",{ref:g,className:`scroll-animate ${d}`,children:a})}}];
+
+//# sourceMappingURL=src_components_AnimateOnScroll_tsx_61440874._.js.map

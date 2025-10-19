@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
-import ScrollAnimationOptimizer from "../components/ScrollAnimationOptimizer";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import ScrollAnimationOptimizer from "@/components/ScrollAnimationOptimizer";
+import ChatBot from "@/components/ChatBot";
+import FloatingActionButton from "@/components/FloatingActionButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +68,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ChatBot />
+        <FloatingActionButton />
       </body>
     </html>
   );

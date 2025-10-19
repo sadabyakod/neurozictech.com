@@ -213,7 +213,7 @@ export default function About() {
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Talented professionals who make the magic happen.
+              Meet our skilled professionals driving excellence and innovation.
             </p>
           </div>
 

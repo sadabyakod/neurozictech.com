@@ -214,7 +214,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-16 left-1 right-1 sm:bottom-20 sm:left-6 sm:right-auto sm:w-96 z-50 w-auto h-80 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
+        <div className="fixed bottom-16 left-4 right-4 sm:bottom-20 sm:left-6 sm:right-auto sm:w-96 z-50 w-auto h-96 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">

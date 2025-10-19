@@ -214,7 +214,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-16 right-2 sm:bottom-20 sm:right-6 z-50 w-72 sm:w-96 h-80 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
+        <div className="fixed bottom-16 left-2 sm:bottom-20 sm:left-6 z-50 w-80 sm:w-96 h-96 sm:h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -375,15 +375,6 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
           {/* Input */}
           <div className="p-4 border-t bg-white">
             <div className="flex space-x-2">
-              <button
-                onClick={handleShowEmailForm}
-                className="bg-green-500 text-white p-3 sm:p-2 rounded-full hover:bg-green-600 transition-colors"
-                title="Send Email"
-              >
-                <svg className="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </button>
               <input
                 type="text"
                 value={inputMessage}
@@ -400,10 +391,10 @@ const ChatBot: React.FC<ChatBotProps> = ({ className = '' }) => {
                   handleSendMessage();
                 }}
                 disabled={!inputMessage.trim() || isTyping}
-                className="bg-blue-500 text-white p-3 sm:p-2 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-blue-500 text-white p-4 sm:p-2 rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[48px] min-h-[48px] flex items-center justify-center"
               >
-                <svg className="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                <svg className="w-7 h-7 sm:w-5 sm:h-5" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
               </button>
             </div>
